@@ -2,7 +2,9 @@
 KEY_ID="65D5C4F2"
 GIMLI_BASE="/home/ben/gimli/Backup/"
 LOG_BASE="${GIMLI_BASE}logs/"
-export PASSPHRASE="FROM_PASS_SAFE::PKI/PGP/Duplicity"
+BACKBLAZE_KEYID="pass::censt5secdevo1p0-acc3"
+BACKBLAZE_APP_KEY="pass::censt5secdevo1p0-acc3"
+export PASSPHRASE="pass::duplicity PGP"
 
 #Backup list of files on censt5secdev01p0
 censt5secdev01p0()
@@ -40,7 +42,7 @@ gimli_remote()
 
   SRC=" /home/ben/gimli/ --exclude /home/ben/gimli/Backup/ --exclude /home/ben/gimli/Nexus"   
   DEST_PATH="Backup/Gimli"
-  DEST="b2://002e0b7884771a70000000001:K002Fu6+mOR2JXQhml08qcVzX3nmTZE@bckblznasbkp01/${DEST_PATH}"
+  DEST="b2://${BACKBLAZE_KEYID}:${BACKBLAZE_APP_KEY}@bckblznasbkp01/${DEST_PATH}"
   OPTS="--progress --encrypt-sign-key ${KEY_ID}"
   LOG="gimli_local_duplicity.log"
 
@@ -54,7 +56,7 @@ cleanup_remote()
 {
 
   DEST_PATH="Backup/Gimli"
-  DEST="b2://002e0b7884771a70000000001:K002Fu6+mOR2JXQhml08qcVzX3nmTZE@bckblznasbkp01/${DEST_PATH}"
+  DEST="b2://${BACKBLAZE_KEYID}:${BACKBLAZE_APP_KEY}@bckblznasbkp01/${DEST_PATH}"
   LOG="gimli_local_duplicity.log"
 
   duplicity cleanup --force ${DEST}
@@ -79,3 +81,4 @@ run()
 
 $1
 unset PASSPHRASE
+
