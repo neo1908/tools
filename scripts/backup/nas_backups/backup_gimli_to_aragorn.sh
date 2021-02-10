@@ -12,5 +12,5 @@ ${backup_result}
 Forget and prune:
 
 ${prune_result}
-" | mail -s "Backup notification - Gimli :: Aragorn" -r 'backup_alerts@'$(hostname) -S 'smtp=10.0.0.55:25' home_alerts@protonmail.com
+" | mail -s "Backup notification - Gimli :: Aragorn" -r 'backup_alerts@'$(hostname) -S 'smtp={{ internal_smtp_ip }}:25' {{ alerts_email_address }}
 
