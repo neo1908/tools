@@ -2,11 +2,12 @@
 #/mnt/gimli/Infosec
 /mnt/gimli/Keys
 #/mnt/gimli/LDAP
-#/mnt/gimli/Library
+/mnt/gimli/Library
 /mnt/gimli/Passwords
 /mnt/gimli/Personal
 /mnt/gimli/People
 #/mnt/gimli/Stuff
 #/mnt/gimli/Plex
 /mnt/gimli/Backup/OPO
+/mnt/gimli/Backup/TOTP-BackupCodes
 #/mnt/gimli/Other
