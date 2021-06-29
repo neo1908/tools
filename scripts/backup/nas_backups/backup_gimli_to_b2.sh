@@ -3,8 +3,8 @@ export B2_ACCOUNT_KEY="{{ b2_account_key }}"
 export B2_ACCOUNT_ID="{{ b2_account_id }}"
 export RESTIC_REPO="{{ b2_bucket_name }}"
 
-backup_result=$(restic backup -r $RESTIC_REPO --files-from /root/backups/.restic_conf/gimli_to_b2/gimli_to_b2.lst -p /root/backups/.restic_conf/gimli_to_b2/gimli_to_b2.pass)
-prune_result=$(restic forget --keep-within 1m --prune -r $RESTIC_REPO -p /root/backups/.restic_conf/gimli_to_b2/gimli_to_b2.pass)
+backup_result=$(restic backup -r $RESTIC_REPO --files-from /root/backups/.restic_conf/gimli_to_b2/gimli_to_b2.lst -p /root/backups/.restic_conf/gimli_to_b2/gimli_to_b2.pass --exclude /mnt/gimli/Library/Misc/DNA/)
+prune_result=$(restic forget --keep-last 5 --prune -r $RESTIC_REPO -p /root/backups/.restic_conf/gimli_to_b2/gimli_to_b2.pass)
 
 echo "Backup results: gimli to b2
 
