@@ -13,7 +13,7 @@ ${backup_result}
 Forget and prune:
 
 ${prune_result}
-" | mail -s "Backup notification - Gimli :: ${RESTIC_REPO}" -r 'backup_alerts@'$(hostname) -S 'smtp={{ internal_smtp_ip }}:25' {{ alerts_email_address }}
+" | mail -s "Backup notification - Gimli :: ${RESTIC_REPO}" -r 'backup_alerts@'$(hostname) -S 'mta=smtp://{{ internal_smtp_ip }}:25' {{ alerts_email_address }}
 
 unset B2_ACCOUNT_KEY
 unset B2_ACCOUNT_ID
